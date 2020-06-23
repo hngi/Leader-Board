@@ -5,7 +5,7 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HNGi7 Leaderboard</title>
- <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="/static/style.css">
  <link rel="stylesheet" href="bootstrap-4.4.1/css/bootstrap.min.css"> 
  <link rel="stylesheet" href="fontawesome/css/all.min.css">
 </head>
@@ -40,14 +40,33 @@
 
 <section id="content">
     <div id="header">
-        <h1 id="head">This is the Leaderboard based on points merited</h1>
+        <h1 id="head">This is the Leaderboard based on points merited
+         </h1>
+        
     </div>
 
     <div id="firstContent">
-        <div id="firstPerson"></div>
-        <div id="secondPerson"></div>
-        <div id="thirdPerson"></div>
-        
+        <div id="firstPerson">
+      position     1.
+        <br>
+           full name <b>{{top3[0].name}}</b> <br>
+           username <b> {{top3[0].username}} </b><br>
+       Point <b>    {{top3[0].points}}</b>
+        </div>
+        <div id="secondPerson">
+      position     2.
+        <br>
+           full name <b> {{top3[1].name}} </b><br>
+          username <b> {{top3[1].username}}   </b>  <br>
+          Point <b> {{top3[1].points}} </b> </b>
+        </div>
+        <div id="thirdPerson">
+     position   3.
+        <br>
+          full name <b>  {{top3[2].name}} </b><br>
+           username <b>{{top3[2].username}}</b><br>
+           Point <b>{{top3[2].points}} </b>
+        </div>        
     </div>
 
     <div id="lastContent">
@@ -59,21 +78,15 @@
               <th>Points</th>
               <th>Share</th>
             </tr>
+            {% for user in users %}
             <tr>
-              <td>3.</td>
-              <td>Jill</td>
-              <td>@Smith</td>		
-              <td>50</td>
+              <td>{{loop.index}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.username}}</td>		
+              <td>{{user.points}}</td>
               <td>Share via <a href="#"><i class="fab fa-facebook"></i></a>
             </tr>
-            <tr>
-                <td>4.</td>
-                <td>Jill</td>
-                <td>@Smith</td>		
-                <td>50</td>
-                <td>Share via <a href="#"><i class="fab fa-facebook"></i></a>      
-            </tr>
-            
+            {%endfor%}
                           
           </table>
     </div>
@@ -84,4 +97,4 @@
 </body>
 </html>
 {%block content%}
-{s%endblock%}
+{%endblock%}
